@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\FormationsRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 #[ORM\Entity(repositoryClass: FormationsRepository::class)]
 class Formations
@@ -30,6 +32,14 @@ class Formations
 
     #[ORM\Column(length: 255)]
     private ?string $lieu = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $createdAt = null;
+
+    public function __construct()
+    {
+        $this->createdAt = new \Datetime();
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +114,18 @@ class Formations
     public function setLieu(string $lieu): static
     {
         $this->lieu = $lieu;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): static
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

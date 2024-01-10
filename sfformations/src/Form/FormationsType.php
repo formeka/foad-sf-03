@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Formations;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,7 +19,10 @@ class FormationsType extends AbstractType
             ->add('duree')
             ->add('niveau')
             ->add('lieu')
-        ;
+            ->add('createdAt', DateTimeType::class, [
+                'model_timezone' => 'UTC',
+                'view_timezone' => 'Europe/Paris',
+            ]);;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
