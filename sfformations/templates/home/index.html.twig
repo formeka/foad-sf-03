@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="container">
-        <h1 class="text-center mt-4" style="padding-top: 90px;">Bienvenue sur notre site dédié aux formations !</h1>
+        <h1 class="text-center fw-bold mt-4" style="padding-top: 50px;">Bienvenue sur notre site dédié aux formations !</h1>
         <p class="text-center text-dark">Découvrez les toutes dernières opportunités de développement professionnel</p>
 
         {% for formation in formations %}
@@ -20,7 +20,7 @@
                     <span class="badge bg-primary text-light">Niveau: {{ formation.niveau }}</span>
                     <span class="badge bg-primary text-light">Lieu: {{ formation.lieu }}</span>
 
-                    <p class="small text-muted" style="padding-top: 15px;">{{ formation.createdAt|date('d/m/Y à H:m:s') }}</p>
+                    <p class="small text-muted" style="padding-top: 15px;">{{ formation.createdAt|date('d/m/Y à H:m:s', 'Europe/paris') }}</p>                
                 </div>
             </div>
         {% endfor %}
