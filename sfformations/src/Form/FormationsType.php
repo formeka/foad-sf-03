@@ -20,9 +20,10 @@ class FormationsType extends AbstractType
             ->add('niveau')
             ->add('lieu')
             ->add('createdAt', DateTimeType::class, [
-                'model_timezone' => 'UTC',
+                'widget' => 'single_text',
+                'input_format' => 'yyyy-MM-dd HH:mm:ss',
                 'view_timezone' => 'Europe/Paris',
-            ]);;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
