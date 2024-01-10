@@ -4,22 +4,31 @@
 {% endblock %}
 
 {% block body %}
+	<h1 class="text-center">Bienvenue sur notre site dédié aux formations !</h1>
+	<p class="text-center">Découvrez les toutes dernières opportunités de développement professionnel</p>
 
+	<div class="card" style="width: 18rem;">
+		<div class="card-body">
 
-	<div class="example-wrapper">
-		<h1>Bienvenue sur notre site dédié aux formations !</h1>
+			{% for formation in formations %}
+				<article>
+					<h5 class="card-title">{{ formation.titre }}</h5>
+					<h6 class="card-subtitle mb-2 text-body-secondary">
+						{{ formation.resume }}
+					</h6>
+					<p class="card-text">{{ formation.description }}</p>
 
-		<p>Découvrez les toutes dernières opportunités de développement professionnel</p>
-		{% for formation in formations %}
-			<article>
-				<h4>{{ formation.titre }}</h4>
-				<p>{{ formation.resume }}</p>
-				<p>{{ formation.description }}</p>
-				<p>{{ formation.duree }}</p>
-                <p>{{ formation.niveau }}</p>
-                <p>{{ formation.lieu }}</p>
-				<p>{{ formation.createdAt|date('d/m/Y à H:m:s') }}</p>
-			</article>
-		{% endfor %}
+					<span class="badge text-bg-primary">Durée:
+						{{ formation.duree }}</span>
+					<span class="badge text-bg-primary">Niveau:
+						{{ formation.niveau }}</span>
+					<span class="badge text-bg-primary">Lieu:
+						{{ formation.lieu }}</span>
+
+					<p>{{ formation.createdAt|date('d/m/Y à H:m:s') }}</p>
+				</article>
+			{% endfor %}
+		</div>
 	</div>
+
 {% endblock %}
